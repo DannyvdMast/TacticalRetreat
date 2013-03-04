@@ -16,6 +16,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+    <None Include="..\irrlicht-1.8\media\sydney.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\irrlicht-1.8\media\sydney.md2" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
