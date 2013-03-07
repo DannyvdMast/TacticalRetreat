@@ -6,7 +6,7 @@ using namespace std;
 
 	ISceneManager* StandardObject::smgr;
 	IVideoDriver* StandardObject::driver;
-	const f32 MOVEMENT_SPEED= 50.0f;
+	const f32 MOVEMENT_SPEED= 500.0f;
 	const f32 ROTATION_SPEED= 1.0f;
 	//default constructor
 	StandardObject::StandardObject()
@@ -71,7 +71,33 @@ using namespace std;
 			setTexture(textureFilename);
 			node->setPosition(position);
 		}
+		ps = smgr->addParticleSystemSceneNode(false);
 
+		scene::IParticleEmitter* em = ps->createBoxEmitter(
+		core::aabbox3d<f32>(-70,0,-70,70,10,70), // emitter size
+		core::vector3df(0.0f,0.06f,0.0f),   // initial direction
+		80,100,                             // emit rate
+		video::SColor(0,255,255,255),       // darkest color
+		video::SColor(0,255,255,255),       // brightest color
+		800,2000,0,                         // min and max age, angle org+1
+		core::dimension2df(1.f,1.f),         // min size
+		core::dimension2df(2.f,2.f));        // max size
+
+		ps->setEmitter(em); // this grabs the emitter
+		em->drop(); // so we can drop it here without deleting it
+
+		scene::IParticleAffector* paf = ps->createFadeOutParticleAffector();
+
+		ps->addAffector(paf); // same goes for the affector
+		paf->drop();
+
+		ps->setPosition(core::vector3df(-70,60,40));
+		ps->setScale(core::vector3df(2,2,2));
+		ps->setMaterialFlag(video::EMF_LIGHTING, false);
+		ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
+		ps->setMaterialTexture(0, driver->getTexture("../../media/fire.bmp"));
+		ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+		ps->setDebugDataVisible(irr::scene::E_DEBUG_SCENE_TYPE::EDS_FULL);
 	}
 	/*Update function
 	*/
@@ -157,6 +183,11 @@ using namespace std;
 		smgr->getActiveCamera()->setTarget(target);
 		smgr->getActiveCamera()->setUpVector(up);
 		smgr->getActiveCamera()->setRotation(node->getRotation());
+
+		//setting particles
+		ps->setPosition(target);
+		ps->setRotation(node->getRotation());
+		ps->getEmitter()->setDirection((smgr->getActiveCamera()->getAbsolutePosition()-target).normalize()/10);
 		
 	}
 

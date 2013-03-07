@@ -34,6 +34,7 @@ class StandardObject {
 		//variables
 		IAnimatedMesh* mesh;
 		IAnimatedMeshSceneNode* node;
+	scene::IParticleSystemSceneNode* ps;
 		vector3df forceAccumulated;
 
 };
