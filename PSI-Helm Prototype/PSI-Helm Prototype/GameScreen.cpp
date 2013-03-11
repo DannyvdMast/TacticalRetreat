@@ -17,7 +17,7 @@ GameScreen::GameScreen()
 	//StandardObject ran4flag(vector3df(200,0,0),"../Assets/r_flag.md3","../Assets/r_flag5.tga");
 	
 	//Add SkyBox
-	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/skydome2.jpg"),64,48,0.999f,5.0f,1000.0f);
+	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/StarSkyBox.jpg"),128,128,0.99999f,10.0f,2000.0f);
 	
 	//smgr->addCameraSceneNodeFPS();
 	//creates Camera

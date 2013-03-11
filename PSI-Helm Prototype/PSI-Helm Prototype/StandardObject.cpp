@@ -95,7 +95,7 @@ using namespace std;
 		ps->setScale(core::vector3df(2,2,2));
 		ps->setMaterialFlag(video::EMF_LIGHTING, false);
 		ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
-		ps->setMaterialTexture(0, driver->getTexture("../Assets/particlewhite.bmp"));
+		ps->setMaterialTexture(0, driver->getTexture("../Assets/Star2.bmp"));
 		ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
 		//ps->setDebugDataVisible(irr::scene::E_DEBUG_SCENE_TYPE::EDS_FULL);
 	}
