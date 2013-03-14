@@ -8,8 +8,9 @@ using namespace std;
 	IVideoDriver* StandardObject::driver;
 	const f32 MOVEMENT_SPEED= 500.0f;
 	const f32 ROTATION_SPEED= 1.0f;
-	u32 currentVelocity = 0;
-	u32 maxVelocity = 100;
+	float currentVelocity = 0;
+	float maxVelocity = 100;
+	float AcceleratePer= 0.1f; 
 
 	//default constructor
 	StandardObject::StandardObject()
@@ -123,12 +124,28 @@ using namespace std;
 
 		//Forward
 		if(input[irr::KEY_UP]){
-			tempPosition -= forward*MOVEMENT_SPEED*deltaTime;
+			if(currentVelocity < maxVelocity) {
+				currentVelocity += AcceleratePer;
+			}
 		}
+		else {
+			if(currentVelocity >= 0) {
+				currentVelocity -= AcceleratePer; 
+			}
+		}
+
+		tempPosition -= forward*((MOVEMENT_SPEED/maxVelocity)*currentVelocity)*deltaTime;
+
 		//BackWards
 		if(input[irr::KEY_DOWN]){
-		
-			tempPosition += forward*MOVEMENT_SPEED*deltaTime;
+			if(currentVelocity > -maxVelocity) {
+				currentVelocity -= AcceleratePer;
+			}
+		}
+		else {
+			if(currentVelocity <= 0) {
+				currentVelocity += AcceleratePer; 
+			}
 		}
 		////Left
 		//if(input[KEY_KEY_A]) {
