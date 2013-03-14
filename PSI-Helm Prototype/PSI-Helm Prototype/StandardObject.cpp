@@ -76,19 +76,19 @@ using namespace std;
 		scene::IParticleEmitter* em = ps->createBoxEmitter(
 		core::aabbox3d<f32>(-170,-170,0,170,170,10), // emitter size
 		core::vector3df(0.0f,0.06f,0.0f),   // initial direction
-		8000,10000,                             // emit rate
+		800,1000,                            // emit rate
 		video::SColor(0,255,255,255),       // darkest color
-		video::SColor(0,255,255,255),       // brightest color
+		video::SColor(0,255,255,255),      // brightest color
 		160,400,0,                         // min and max age, angle org+1 800,2000
 		core::dimension2df(1.f,1.f),         // min size
-		core::dimension2df(2.f,2.f));        // max size
+		core::dimension2df(2.f,2.f));       // max size
 
 		ps->setEmitter(em); // this grabs the emitter
 		em->drop(); // so we can drop it here without deleting it
 
-		scene::IParticleAffector* paf = ps->createFadeOutParticleAffector();
+		scene::IParticleAffector* paf = ps->createFadeOutParticleAffector(irr::video::SColor(0,0,0,0),100U);
 
-		//ps->addAffector(paf); // same goes for the affector
+		ps->addAffector(paf); // same goes for the affector
 		paf->drop();
 
 		ps->setPosition(core::vector3df(-70,60,40));
@@ -116,15 +116,19 @@ using namespace std;
 		NodeRotation.transformVect(forward);
 		NodeRotation.transformVect(right);
 		NodeRotation.transformVect(up);
-
+		ps->setVisible(false);
+		
 		//Forward
 		if(input[irr::KEY_KEY_W]){
 			tempPosition -= forward*MOVEMENT_SPEED*deltaTime;
+			
+			ps->setVisible(true);
 		}
 		//BackWards
 		if(input[irr::KEY_KEY_S]){
 		
 			tempPosition += forward*MOVEMENT_SPEED*deltaTime;
+			ps->setVisible(true);
 		}
 		//Left
 		if(input[KEY_KEY_A]) {
