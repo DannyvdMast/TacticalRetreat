@@ -116,7 +116,7 @@ using namespace std;
 		NodeRotation.transformVect(forward);
 		NodeRotation.transformVect(right);
 		NodeRotation.transformVect(up);
-		ps->setVisible(false);
+	ps->setVisible(false);
 		
 		//Forward
 		if(input[irr::KEY_KEY_W]){
@@ -198,6 +198,7 @@ using namespace std;
 		//ps->setRotation(node->getRotation());newRotation * core::RADTODEG core::vector3df(90,0,90)+
 		ps->setRotation(node->getRotation());
 		ps->getEmitter()->setDirection((smgr->getActiveCamera()->getAbsolutePosition()-target).normalize()/1000);
+		
 		
 	}
 
