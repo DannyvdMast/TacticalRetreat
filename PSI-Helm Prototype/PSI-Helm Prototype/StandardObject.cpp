@@ -8,6 +8,9 @@ using namespace std;
 	IVideoDriver* StandardObject::driver;
 	const f32 MOVEMENT_SPEED= 500.0f;
 	const f32 ROTATION_SPEED= 1.0f;
+	u32 currentVelocity = 0;
+	u32 maxVelocity = 100;
+
 	//default constructor
 	StandardObject::StandardObject()
 	{
@@ -53,6 +56,7 @@ using namespace std;
 		}
 
 	}
+	
 	// constructor with position and other atributes + filename of mesh and texture
 	StandardObject::StandardObject(vector3df position,const io::path & meshFilename,const io::path & textureFilename)
 	{ 
@@ -119,46 +123,45 @@ using namespace std;
 	ps->setVisible(false);
 		
 		//Forward
-		if(input[irr::KEY_KEY_W]){
+		if(input[irr::KEY_UP]){
 			tempPosition -= forward*MOVEMENT_SPEED*deltaTime;
 			
 			ps->setVisible(true);
 		}
 		//BackWards
-		if(input[irr::KEY_KEY_S]){
+		if(input[irr::KEY_DOWN]){
 		
 			tempPosition += forward*MOVEMENT_SPEED*deltaTime;
 			ps->setVisible(true);
 		}
-		//Left
-		if(input[KEY_KEY_A]) {
-			tempPosition += right * MOVEMENT_SPEED*deltaTime;
-			
-		}
-		//Right
-		if(input[KEY_KEY_D]) {
-			tempPosition -= right * MOVEMENT_SPEED*deltaTime;
-			
-		}
+		////Left
+		//if(input[KEY_KEY_A]) {
+		//	tempPosition += right * MOVEMENT_SPEED*deltaTime;
+		//	
+		//}
+		////Right
+		//if(input[KEY_KEY_D]) {
+		//	tempPosition -= right * MOVEMENT_SPEED*deltaTime;\
+		//}
 		f32 yawChange = 0;
 		f32 pitchChange = 0;
 		f32 rollChange = 0;
 
 		//PitchUP
-		if(input[irr::KEY_UP]) {
+		if(input[irr::KEY_KEY_S]) {
 			 pitchChange += ROTATION_SPEED*deltaTime;
 		}
 		//PitchDown
-		if(input[irr::KEY_DOWN]) { 
+		if(input[irr::KEY_KEY_W]) { 
 			pitchChange -= ROTATION_SPEED*deltaTime;
 		}
-		//yawLeft
-		if(input[irr::KEY_LEFT]) {
-			 yawChange -= ROTATION_SPEED*deltaTime;
+		//rollLeft
+		if(input[irr::KEY_KEY_A]) {
+			 rollChange -= ROTATION_SPEED*deltaTime;
 		}
-		//yawRight
-		if(input[irr::KEY_RIGHT]) {
-			 yawChange += ROTATION_SPEED*deltaTime;
+		//rollRight
+		if(input[irr::KEY_KEY_D]) {
+			 rollChange += ROTATION_SPEED*deltaTime;
 		}
 		// calculate the orientation from ypr
 		 core::quaternion orientation (tempRotation * core::DEGTORAD); 
