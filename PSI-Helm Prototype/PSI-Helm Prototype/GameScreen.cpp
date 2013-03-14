@@ -26,7 +26,7 @@ GameScreen::GameScreen()
 
 void GameScreen::Update(bool input[], f32 deltaTime)
 {
-
+	//guienv->addStaticText(L"hello",
 	flag->Update(input,deltaTime);
 
 }
