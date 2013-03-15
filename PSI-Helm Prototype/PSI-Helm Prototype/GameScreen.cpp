@@ -19,6 +19,9 @@ GameScreen::GameScreen()
 	//Add SkyBox
 	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/StarSkyBox.jpg"),128,128,0.99999f,10.0f,2000.0f);
 	
+	font = guienv->getFont("../Assets/bigfont.png");
+	images = driver->getTexture("../Assets/HUD.png");
+	driver->makeColorKeyTexture(images, core::position2d<s32>(0,0));
 	//smgr->addCameraSceneNodeFPS();
 	//creates Camera
 	smgr->addCameraSceneNode(flag->getNode(), core::vector3df(flag->getNode()->getPosition().X-40,flag->getNode()->getPosition().Y+90,flag->getNode()->getPosition().Z+250),core::vector3df(flag->getNode()->getPosition().X-60,flag->getNode()->getPosition().Y+80,flag->getNode()->getPosition().Z+240));
@@ -26,7 +29,14 @@ GameScreen::GameScreen()
 
 void GameScreen::Update(bool input[], f32 deltaTime)
 {
-	//guienv->addStaticText(L"hello",
 	flag->Update(input,deltaTime);
+	driver->draw2DImage(images, core::position2d<s32>(200,640),
+				core::rect<s32>(0,0,265,150), 0,
+				video::SColor(255,255,255,255), true);
+	if (font){
+				font->draw(L"10 Mph",
+					core::rect<s32>(300,652,300,50),
+					video::SColor(255,226,90,0));
+	}
 
 }

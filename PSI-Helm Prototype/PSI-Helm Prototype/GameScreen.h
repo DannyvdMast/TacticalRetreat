@@ -21,6 +21,8 @@ public:
 	static IGUIEnvironment* guienv;
 	
 	StandardObject* flag;
+	gui::IGUIFont* font;
+	video::ITexture* images;
 	void Update(bool input[],f32 deltaTime);
 
 private:
