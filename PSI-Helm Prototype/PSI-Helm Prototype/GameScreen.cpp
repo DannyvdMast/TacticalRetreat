@@ -34,7 +34,11 @@ void GameScreen::Update(bool input[], f32 deltaTime)
 				core::rect<s32>(0,0,265,150), 0,
 				video::SColor(255,255,255,255), true);
 	if (font){
-				font->draw(L"10 Mph",
+		core::stringw str = L"";
+		str+=(int)flag->getVelocity();
+		str+=" Mph";
+
+		font->draw(str.c_str(),
 					core::rect<s32>(300,652,300,50),
 					video::SColor(255,226,90,0));
 	}

@@ -301,6 +301,9 @@ using namespace std;
 	{
 		return node;
 	}
+	float StandardObject::getVelocity(){
+		return currentVelocity;
+	}
 	//obsolete
 	void StandardObject::drawall()
 	{
