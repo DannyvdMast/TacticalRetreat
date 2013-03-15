@@ -33,9 +33,9 @@ void GameScreen::createRandomPlanets(int amountOfPlanets){
 	float randY = 0;
 	float randZ = 0;
 	for(int i=0; i < amountOfPlanets; i++){
-		randX = rand() % 9000 - 8000; // -1000 - 1000
-		randY = rand() % 9000 - 8000; // -1000 - 1000
-		randZ = rand() % 9000 - 8000; // -1000 - 1000
+		randX = rand() % 10000 - 5000; // -5000 - 5000
+		randY = rand() % 10000 - 5000; // -5000 - 5000
+		randZ = rand() % 10000 - 5000; // -5000 - 5000
 		planet = new BasicObject(vector3df(randX,randY,randZ), "../Assets/asteroid3DS.3DS", "");
 	}
 }
