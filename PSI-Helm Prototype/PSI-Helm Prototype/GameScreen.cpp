@@ -13,7 +13,7 @@ GameScreen::GameScreen() {
 	
 	flag = new StandardObject(vector3df(0,0,0),"../Assets/crane_driver_cabin.3ds","../Assets/r_flag3.tga");
 	// Create random planets
-	createRandomPlanets(10); 
+	createRandomPlanets(300); 
 
 	//StandardObject ran1flag(vector3df(-200,0,0));
 	//StandardObject ran2flag(vector3df(0,0,-200),"../Assets/r_flag.md3","../Assets/r_flag3.tga");
@@ -33,10 +33,10 @@ void GameScreen::createRandomPlanets(int amountOfPlanets){
 	float randY = 0;
 	float randZ = 0;
 	for(int i=0; i < amountOfPlanets; i++){
-		randX = rand() % 2000 - 1000; // -1000 - 1000
-		randY = rand() % 2000 - 1000; // -1000 - 1000
-		randZ = rand() % 2000 - 1000; // -1000 - 1000
-		planet = new BasicObject(vector3df(0,0,0), "../Assets/asteroid3DS.3DS", "");
+		randX = rand() % 9000 - 8000; // -1000 - 1000
+		randY = rand() % 9000 - 8000; // -1000 - 1000
+		randZ = rand() % 9000 - 8000; // -1000 - 1000
+		planet = new BasicObject(vector3df(randX,randY,randZ), "../Assets/asteroid3DS.3DS", "");
 	}
 }
 
