@@ -22,8 +22,11 @@ public:
 	static IGUIEnvironment* guienv;
 	
 	StandardObject* flag;
-	void Update(bool input[],f32 deltaTime);
 	BasicObject* planet;
+
+	void Update(bool input[],f32 deltaTime);
+	void createRandomPlanets(int amountOfPlanets);
+
 
 private:
 };

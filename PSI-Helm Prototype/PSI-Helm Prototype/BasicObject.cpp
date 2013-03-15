@@ -54,8 +54,9 @@ using namespace std;
 	
 		if (node) {
 			node->setMaterialFlag(EMF_LIGHTING, false);
-			node->setMD2Animation(scene::EMAT_STAND);
-			setTexture(textureFilename);
+			if(textureFilename != ""){
+				setTexture(textureFilename);
+			}
 			node->setPosition(position);
 		}
 	}
