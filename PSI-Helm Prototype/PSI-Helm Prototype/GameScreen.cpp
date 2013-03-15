@@ -30,8 +30,27 @@ GameScreen::GameScreen()
 void GameScreen::Update(bool input[], f32 deltaTime)
 {
 	flag->Update(input,deltaTime);
+	//Speed BG
 	driver->draw2DImage(images, core::position2d<s32>(200,640),
 				core::rect<s32>(0,0,265,150), 0,
+				video::SColor(255,255,255,255), true);
+	//Roll Bar
+	//+
+		driver->draw2DImage(images, core::position2d<s32>(220,690),
+			core::rect<s32>(300,0,303+flag->getRollVelocity(),5), 0,
+				video::SColor(255,255,255,255), true);
+	//-
+		driver->draw2DImage(images, core::position2d<s32>(220,696),
+			core::rect<s32>(300,0,303+(flag->getRollVelocity()*-1),5), 0,
+				video::SColor(255,255,255,255), true);
+	//Pitch Bar
+	//+
+		driver->draw2DImage(images, core::position2d<s32>(220,702),
+			core::rect<s32>(300,0,303+flag->getPitchVelocity(),5), 0,
+				video::SColor(255,255,255,255), true);
+	//-
+		driver->draw2DImage(images, core::position2d<s32>(220,708),
+			core::rect<s32>(300,0,303+(flag->getPitchVelocity()*-1),5), 0,
 				video::SColor(255,255,255,255), true);
 	if (font){
 		core::stringw str = L"";

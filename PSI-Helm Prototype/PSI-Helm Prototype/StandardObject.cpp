@@ -304,6 +304,12 @@ using namespace std;
 	float StandardObject::getVelocity(){
 		return currentVelocity;
 	}
+	float StandardObject::getPitchVelocity(){
+		return currentPitchVelocity;
+	}
+	float StandardObject::getRollVelocity(){
+		return currentRollVelocity;
+	}
 	//obsolete
 	void StandardObject::drawall()
 	{
