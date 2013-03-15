@@ -10,7 +10,16 @@ IGUIEnvironment* GameScreen::guienv;
 
 GameScreen::GameScreen()
 {
+
+	// The game screen will add every thing to his scene, so if we create and object the games screen will add it;
 	flag = new StandardObject(vector3df(0,0,0),"../Assets/crane_driver_cabin.3ds","../Assets/r_flag3.tga");
+
+	// we need a planet now create a planet!
+
+	planet = new BasicObject(vector3df(0,0,0), "../Assets/Moonts.c4d", "../Assets/MoonTexture.bmp");
+
+
+	// first we are going to commit our awsome changes HAhahaha like it!! go ;
 	//StandardObject ran1flag(vector3df(-200,0,0));
 	//StandardObject ran2flag(vector3df(0,0,-200),"../Assets/r_flag.md3","../Assets/r_flag3.tga");
 	//StandardObject ran3flag(vector3df(0,0,200),"../Assets/r_flag.md3","../Assets/r_flag4.tga");

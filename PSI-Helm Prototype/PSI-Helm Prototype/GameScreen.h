@@ -2,6 +2,7 @@
 
 #include <irrlicht.h>
 #include "StandardObject.h"
+#include "BasicObject.h"
 
 using namespace irr;
 using namespace core;
@@ -22,6 +23,7 @@ public:
 	
 	StandardObject* flag;
 	void Update(bool input[],f32 deltaTime);
+	BasicObject* planet;
 
 private:
 };
