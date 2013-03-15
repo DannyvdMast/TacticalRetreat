@@ -181,7 +181,7 @@ using namespace std;
 		}
 		else if((currentPitchVelocity > 0)) { 
 			currentPitchVelocity -= PitchAcceleratePer; 
-		}
+			}
 		
 		pitchChange += ((ROTATION_SPEED/maxPitchVelocity)*currentPitchVelocity)*deltaTime;
 		//PitchDown
@@ -206,6 +206,17 @@ using namespace std;
 		}
 
 		//rollRight
+		if(input[irr::KEY_KEY_D]) {
+			if(currentRollVelocity <= maxRollVelocity) {
+				currentRollVelocity += RollAcceleratePer; 
+			}
+		}
+		else if((currentRollVelocity > 0)) { 
+			currentRollVelocity -= RollAcceleratePer; 
+		}
+		
+		rollChange += ((ROTATION_SPEED/maxRollVelocity)*currentRollVelocity)*deltaTime;
+
 		if(input[irr::KEY_KEY_D]) {
 			if(currentRollVelocity <= maxRollVelocity) {
 				currentRollVelocity += RollAcceleratePer; 
