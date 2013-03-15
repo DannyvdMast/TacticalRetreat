@@ -8,9 +8,22 @@ using namespace std;
 	IVideoDriver* StandardObject::driver;
 	const f32 MOVEMENT_SPEED= 500.0f;
 	const f32 ROTATION_SPEED= 1.0f;
+
+	// Velocity for speed
 	float currentVelocity = 0;
 	float maxVelocity = 100;
 	float AcceleratePer= 0.1f; 
+
+	// Velocity for rolling
+	float currentRollVelocity = 0; 
+	float maxRollVelocity = 100; 
+	float RollAcceleratePer = 0.1f; 
+
+	// Velocity for pitching
+	float currentPitchVelocity = 0; 
+	float maxPitchVelocity = 100; 
+	float PitchAcceleratePer = 0.1f; 
+
 
 	//default constructor
 	StandardObject::StandardObject()
@@ -163,20 +176,48 @@ using namespace std;
 
 		//PitchUP
 		if(input[irr::KEY_KEY_S]) {
-			 pitchChange += ROTATION_SPEED*deltaTime;
+			if(currentPitchVelocity <= maxPitchVelocity) { 
+				currentPitchVelocity += PitchAcceleratePer; 
+			}
 		}
+		else if((currentPitchVelocity > 0)) { 
+			currentPitchVelocity -= PitchAcceleratePer; 
+		}
+		
+		pitchChange += ((ROTATION_SPEED/maxPitchVelocity)*currentPitchVelocity)*deltaTime;
 		//PitchDown
 		if(input[irr::KEY_KEY_W]) { 
-			pitchChange -= ROTATION_SPEED*deltaTime;
+			if(currentPitchVelocity >= -maxPitchVelocity) { 
+				currentPitchVelocity -= PitchAcceleratePer; 
+			}
 		}
+		else if((currentPitchVelocity < 0)) { 
+			currentPitchVelocity += PitchAcceleratePer; 
+		}
+		pitchChange += ((ROTATION_SPEED/maxPitchVelocity)*currentPitchVelocity)*deltaTime;
+
 		//rollLeft
-		if(input[irr::KEY_KEY_A]) {
-			 rollChange -= ROTATION_SPEED*deltaTime;
+		if(input[irr::KEY_KEY_A]) { 
+			if(currentRollVelocity >= -maxRollVelocity) { 
+				currentRollVelocity -= RollAcceleratePer; 
+			}
 		}
+		else if((currentRollVelocity < 0)) { 
+			currentRollVelocity += RollAcceleratePer; 
+		}
+
 		//rollRight
 		if(input[irr::KEY_KEY_D]) {
-			 rollChange += ROTATION_SPEED*deltaTime;
+			if(currentRollVelocity <= maxRollVelocity) {
+				currentRollVelocity += RollAcceleratePer; 
+			}
 		}
+		else if((currentRollVelocity > 0)) { 
+			currentRollVelocity -= RollAcceleratePer; 
+		}
+		
+		rollChange += ((ROTATION_SPEED/maxRollVelocity)*currentRollVelocity)*deltaTime;
+
 		// calculate the orientation from ypr
 		 core::quaternion orientation (tempRotation * core::DEGTORAD); 
 
