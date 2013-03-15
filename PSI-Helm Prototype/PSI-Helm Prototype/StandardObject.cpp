@@ -8,6 +8,7 @@ using namespace std;
 	IVideoDriver* StandardObject::driver;
 	const f32 MOVEMENT_SPEED= 500.0f;
 	const f32 ROTATION_SPEED= 1.0f;
+
 	//default constructor
 	StandardObject::StandardObject()
 	{
