@@ -27,6 +27,9 @@ class StandardObject {
 		void setTexture(const io::path & filename);
 		void Update(bool input[],f32 deltaTime);
 		void AddForce(vector3df force);
+		float getVelocity();
+		float getPitchVelocity();
+		float getRollVelocity();
 		void drawall();
 		IAnimatedMesh* getMesh();
 		IAnimatedMeshSceneNode* getNode();
