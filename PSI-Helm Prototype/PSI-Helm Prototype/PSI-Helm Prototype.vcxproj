@@ -79,12 +79,14 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasicObject.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="StandardObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BasicObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="MyEventReceiver.cpp" />
     <ClCompile Include="PSI-Helm Prototype.cpp" />

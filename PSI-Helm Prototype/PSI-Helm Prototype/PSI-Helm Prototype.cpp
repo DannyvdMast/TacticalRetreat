@@ -6,6 +6,7 @@ using namespace std;
 #include "driverChoice.h"
 #include "StandardObject.h"
 #include "GameScreen.h"
+#include "BasicObject.h"
 
 using namespace irr;
 using namespace core;
@@ -66,8 +67,11 @@ int main()
 	ISceneManager* smgr = device->getSceneManager();
 	IGUIEnvironment* guienv = device->getGUIEnvironment();
 	
+	// Lets look how the standardObject works
 	StandardObject::smgr = smgr;
 	StandardObject::driver = driver;
+	BasicObject::smgr = smgr;
+	BasicObject::driver = driver;
 
 	GameScreen::smgr = smgr;
 	GameScreen::driver = driver;

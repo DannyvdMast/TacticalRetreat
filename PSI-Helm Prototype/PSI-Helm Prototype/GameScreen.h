@@ -2,6 +2,7 @@
 
 #include <irrlicht.h>
 #include "StandardObject.h"
+#include "BasicObject.h"
 
 using namespace irr;
 using namespace core;
@@ -21,9 +22,13 @@ public:
 	static IGUIEnvironment* guienv;
 	
 	StandardObject* flag;
+	BasicObject* planet;
+
 	gui::IGUIFont* font;
 	video::ITexture* images;
 	void Update(bool input[],f32 deltaTime);
+	void createRandomPlanets(int amountOfPlanets);
+
 
 private:
 };
